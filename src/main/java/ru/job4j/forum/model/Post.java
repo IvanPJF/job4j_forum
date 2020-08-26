@@ -1,14 +1,36 @@
 package ru.job4j.forum.model;
 
+import javax.persistence.*;
 import java.util.*;
 
+@Entity
+@Table(name = "post")
+@NamedEntityGraph(
+        name = Post.POST_ALL_FIELDS,
+        attributeNodes = {
+                @NamedAttributeNode("user"),
+                @NamedAttributeNode("comments")
+        }
+)
 public class Post {
 
+    public static final String POST_ALL_FIELDS = "post.all.fields";
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "description")
     private String desc;
+    @Column(name = "created")
     private Calendar created = new GregorianCalendar();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OrderBy("created")
     private Set<PostComment> comments = new TreeSet<>();
 
     public static Post of(String name, String desc, User user) {

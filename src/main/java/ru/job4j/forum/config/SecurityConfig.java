@@ -9,14 +9,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.job4j.forum.service.MemoryUserDetailsService;
+import ru.job4j.forum.service.AuthUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private MemoryUserDetailsService userDetailsService;
+    private AuthUserDetailsService userDetailsService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {

@@ -1,14 +1,37 @@
 package ru.job4j.forum.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
+@Entity
+@Table(name = "users")
+@NamedEntityGraph(
+        name = User.USER_ALL_FIELDS,
+        attributeNodes = {
+                @NamedAttributeNode("authorities")
+        }
+)
 public class User {
 
+    public static final String USER_ALL_FIELDS = "user.all.fields";
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+    @Column(name = "username")
     private String username;
+    @Column(name = "password")
     private String password;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_authority",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id")
+    )
     private Set<Authority> authorities;
+    @Column(name = "enabled")
     private boolean enabled;
 
     public int getId() {

@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.job4j.forum.model.Post;
+import ru.job4j.forum.service.PostCommentService;
 import ru.job4j.forum.model.PostComment;
 import ru.job4j.forum.service.PostService;
 import ru.job4j.forum.service.UserService;
@@ -16,10 +16,14 @@ public class CommentControl {
 
     private final UserService userService;
     private final PostService postService;
+    private final PostCommentService postCommentService;
 
-    public CommentControl(UserService userService, PostService postService) {
+    public CommentControl(UserService userService,
+                          PostService postService,
+                          PostCommentService postCommentService) {
         this.userService = userService;
         this.postService = postService;
+        this.postCommentService = postCommentService;
     }
 
     @GetMapping("/create")
@@ -33,8 +37,7 @@ public class CommentControl {
         UserDetails principal = (UserDetails) SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
         comment.setUser(userService.findByUsername(principal.getUsername()));
-        Post post = postService.findById(comment.getPost().getId());
-        post.getComments().add(comment);
-        return "redirect:/post?id=" + post.getId();
+        postCommentService.save(comment);
+        return "redirect:/post?id=" + comment.getPost().getId();
     }
 }

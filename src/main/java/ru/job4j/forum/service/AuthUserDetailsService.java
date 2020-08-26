@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Authority;
 import ru.job4j.forum.model.User;
-import ru.job4j.forum.repository.UserMemRepository;
+import ru.job4j.forum.repository.UserDataRepository;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -16,11 +16,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class MemoryUserDetailsService implements UserDetailsService {
+public class AuthUserDetailsService implements UserDetailsService {
 
-    private final UserMemRepository repository;
+    private final UserDataRepository repository;
 
-    public MemoryUserDetailsService(UserMemRepository repository) {
+    public AuthUserDetailsService(UserDataRepository repository) {
         this.repository = repository;
     }
 
