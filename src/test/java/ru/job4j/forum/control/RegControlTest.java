@@ -8,12 +8,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.job4j.forum.Main;
+import ru.job4j.forum.model.Authority;
 import ru.job4j.forum.model.User;
+import ru.job4j.forum.service.AuthorityService;
 import ru.job4j.forum.service.UserService;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -25,6 +28,9 @@ public class RegControlTest {
 
     @MockBean
     private UserService userService;
+
+    @MockBean
+    private AuthorityService authorityService;
 
     @Autowired
     private MockMvc mockMvc;
@@ -39,6 +45,7 @@ public class RegControlTest {
 
     @Test
     public void shouldReturnDefaultMessageForUrlRegWithMethodPost() throws Exception {
+        when(authorityService.findByName("ROLE_USER")).thenReturn(Authority.of("USER"));
         this.mockMvc.perform(post("/reg")
                 .param("username", "root")
                 .param("password", "root"))
