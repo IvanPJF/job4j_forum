@@ -4,6 +4,10 @@ jdk:
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
 
+install: true
+
+script: mvn clean package -DskipTests=true
+
 services:
   - postgresql
 
@@ -25,3 +29,8 @@ notifications:
 env:
   global:
     - CODECOV_TOKEN="40d48b74-734a-4be6-8a01-926911a841c8"
+deploy:
+  provider: heroku
+  api_key:
+    secure: ryWoCZ43DHMm4+Dqyl1QbgopgjogUedDzxXBHiu73iTJVZNaOKiT8b14uqEGZbxmZUanL3/lvn0KnGtUDqGTbUhIEUlgYq+t5G698CK0qiU6K2eGHH4ke/XmCfFaNuCcZq7mzzRm3Jzpf5dMF5CFSd6voII31N1HwSlkXzxsUwV04c2363y+nisDJYol3nKkZBIit/HVHvMZDTZ0nZKsSSBW+E6WoBEZSom7dwsPjcPxjmeezJcY6e4iKoXDfvHe6PBFUGYqFKFGzaTRqgRD+a3EnMc5TcCrtdmdWh3HQqKyCKLtXVBVw6sFSsvlBTzfB/97ogfExWxQ27BBqBvvh5U3FbDXJJBakrfAZLYoYffi/0rQwq3uIyoUu1EErMR57zdhK9GYLkHu2pmUQT3jV9Ao5YMc6Pq7hKTDZSEYj+3g6ogFftLbb3nPan+fEiSqOLAsi1H5OzdcfS2ZwFRt/9MSl+3BuumUiLAicsvDAK9mOHQGp9FO/qVtkRnxwf+MfajiqHtuuNN/mNEQVXNIrA/m0eriZ0ts+9yEwflKkAQ5Ot5M+I+5Avk6tRGPvPbd8eO5kZlU0PyIEJMzdp4UI3Y5tsEhfyup7Hpn6bFvlgQxYHxDxbAIKhPKlkGzgpTVE8niD2d9GhdiAtOIfMyL8jaNutRjXHPLvkXLlQJxeQ0=
+  app: ivanpjf-forum
