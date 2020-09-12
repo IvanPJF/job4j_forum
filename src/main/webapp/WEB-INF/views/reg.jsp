@@ -9,11 +9,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Login</title>
     <title>Registration</title>
 </head>
 <body>
 <div class="container">
+    <div class="row justify-content-md-center text-center pt-2">
+        <div class="col h4">
+            Регистрация
+        </div>
+    </div>
     <div class="row justify-content-center pt-3">
         <div class="col-auto">
             <form name='reg' action="<c:url value='/reg'/>" method='POST'>

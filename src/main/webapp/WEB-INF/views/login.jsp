@@ -20,6 +20,11 @@
             </div>
         </c:if>
     </div>
+    <div class="row justify-content-md-center text-center pt-2">
+        <div class="col h4">
+            Вход на сайт
+        </div>
+    </div>
     <div class="row justify-content-center pt-3">
         <div class="col-auto">
             <form name='login' action="<c:url value='/login'/>" method='POST'>
