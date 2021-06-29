@@ -13,28 +13,28 @@
 
 + __Аутентификация пользователя__
 
-![Auth](/images/Input.png "Аутентификация пользователя")
+<kbd>![Auth](/images/Input.png "Аутентификация пользователя")
 
 + __Регистрация в системе__
 
-![Reg](/images/Reg.png "Регистрация пользователя")
+<kbd>![Reg](/images/Reg.png "Регистрация пользователя")
 
 + __Список всех постов__
 
-![Main](/images/Main.png "Список всех постов")
+<kbd>![Main](/images/Main.png "Список всех постов")
 
 + __Добавление нового поста__
 
-![Add_topic](/images/Add_topic.png "Добавление нового поста")
+<kbd>![Add_topic](/images/Add_topic.png "Добавление нового поста")
 
 + __Изменение существующего поста__
 
-![Edit_topic](/images/Edit_topic.png "Изменение существующего поста")
+<kbd>![Edit_topic](/images/Edit_topic.png "Изменение существующего поста")
 
 + __Список всех комментариев к выбранному посту__
 
-![All_comments](/images/All_comments.png "Список всех комментариев к выбранному посту")
+<kbd>![All_comments](/images/All_comments.png "Список всех комментариев к выбранному посту")
 
 + __Добавление нового комментария к посту__
 
-![Add_comment](/images/Add_comment.png "Добавление нового комментария к посту")
+<kbd>![Add_comment](/images/Add_comment.png "Добавление нового комментария к посту")
